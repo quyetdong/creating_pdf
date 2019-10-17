@@ -1,0 +1,30 @@
+[
+    {
+        "itemId": 1,
+        "description": "Rental",
+        "quantity": "",
+        "unitPrice": "",
+        "amount": "5,000.00"
+    },
+    {
+        "itemId": 2,
+        "description": "Furniture Rental Fee",
+        "quantity": "",
+        "unitPrice": "",
+        "amount": "500.00"
+    },
+    {
+        "itemId": 3,
+        "description": "Electric fee (5743 - 5951)",
+        "quantity": "208",
+        "unitPrice": "7.00",
+        "amount": "1,456.00"
+    },
+    {
+        "itemId": 4,
+        "description": "Hydrfo fee (699 - 722)",
+        "quantity": "23",
+        "unitPrice": "19.00",
+        "amount": "437.00"
+    }
+]
