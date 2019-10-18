@@ -1,0 +1,56 @@
+{
+  "createdAt": "23/8/2019 [10:45 AM]",
+  "invoiceNumber": "#INV201920002",
+  "billingDate": "25 AUG 2019",
+  "dueDate": "31 AUG 2019",
+  "user": {
+    "userName": "The Living OS Thong Lor",
+    "addressLines": [
+      "28/244 Soi 7 Road",
+      "Thong lor",
+      "Bangkok 10400"
+    ],
+    "phoneNumber": "02-3434543",
+    "taxId": "0123433444565",
+    "billTo": {
+      "roomUnit": "88/102",
+      "name": "Samyan Suksan",
+      "phoneNumber": "0897867866",
+      "addressLines": [
+        "28/244 Soi 7 Road",
+        "Samyan",
+        "Bangkok"
+      ]
+    }
+  },
+  "items": [
+    {
+      "itemId": 1,
+      "description": "Rental",
+      "quantity": "",
+      "unitPrice": "",
+      "amount": "5,000.00"
+    },
+    {
+      "itemId": 2,
+      "description": "Furniture Rental Fee",
+      "quantity": "",
+      "unitPrice": "",
+      "amount": "500.00"
+    },
+    {
+      "itemId": 3,
+      "description": "Electric fee (5743 - 5951)",
+      "quantity": "208",
+      "unitPrice": "7.00",
+      "amount": "1,456.00"
+    },
+    {
+      "itemId": 4,
+      "description": "Hydrfo fee (699 - 722)",
+      "quantity": "23",
+      "unitPrice": "19.00",
+      "amount": "437.00"
+    }
+  ]
+}
