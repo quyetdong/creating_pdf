@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:table": "node ./createTable.js",
+    "build:table": "node ./createHtml.js",
     "prebuild:pdf": "yarn build:table",
     "build:pdf": "node ./createPdf.js"
   },

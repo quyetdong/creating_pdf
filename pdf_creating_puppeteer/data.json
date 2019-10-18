@@ -52,5 +52,11 @@
       "unitPrice": "19.00",
       "amount": "437.00"
     }
-  ]
+  ],
+  "itemsTotal": {
+    "numberValue": "7525.51",
+    "stringValue": "seven thousand five hundred and twenty-five point five one",
+    "vat": "132.51",
+    "grandTotal": "7,393.00"
+  }
 }

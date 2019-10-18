@@ -1,81 +1,10 @@
 const fs = require('fs');
-// JSON data
+
 const data = require('./data.json');
-// Build paths
 const { buildPathHtml } = require('./buildPaths');
-
-/**
- * create user information at the top left of the invoice
- * @param {*} user 
- */
-const createUserInfor = (user = { addressLines: [] }) => {
-  const { billTo = {
-    roomUnit: '',
-    name: '',
-    phoneNumber: '',
-    addressLines: []
-  } } = user;
-
-  return `
-    <div class='user-infor'>
-      <div class='logo'></div>
-      <p>${user.userName}</p>
-      <p>${user.addressLines[0]}, ${user.addressLines[1]}${user.addressLines[2] ? `, ${user.addressLines[2]}` : ''}</p>
-      <p>Tel: ${user.phoneNumber}</p>
-      <p>Tax ID: ${user.taxId}</p>
-      <br />
-      <p><b>Room Unit:</b> ${billTo.roomUnit}</p>
-      <p><b>Bill to:</b> ${billTo.name}</p>
-      <p><b>Tel:</b> ${billTo.phoneNumber}</p>
-      <p><b>Address:</b> ${billTo.addressLines[0]}, ${billTo.addressLines[1]}${billTo.addressLines[2] ? `, ${billTo.addressLines[2]}` : ''}</p>
-    </div>
-  `;
-};
-
-/**
- * create invoice information at the top right of the invoice
- * @param {*} user 
- */
-const createInvoiceInfor = (invoice = {}) => {
-  return `
-    <div class='invoice-infor'>
-      <p>${invoice.createdAt}</p>
-      <h2 class='invoice-bottom-border'>INVOICE</h2>
-      <p><b>(Original)</b></p>
-      <br />
-      <p>${invoice.invoiceNumber}</p>
-      <br />
-      <p><b>Billing Date</b> ${invoice.billingDate}</p>
-      <p><b>Due Date</b> ${invoice.dueDate}</p>
-    </div>
-  `;
-};
-
-/**
- * Take an object which has the following model
- * @param {Object} item 
- * @model
- * {
- *   "invoiceId": `Number`,
- *   "createdDate": `String`,
- *   "dueDate": `String`,
- *   "address": `String`,
- *   "companyName": `String`,
- *   "invoiceName": `String`,
- *   "price": `Number`,
- * }
- * 
- * @returns {String}
- */
-const createRow = (item) => `
-  <tr>
-    <td>${item.itemId}</td>
-    <td>${item.description}</td>
-    <td>${item.quantity}</td>
-    <td>${item.unitPrice}</td>
-    <td>${item.amount}</td>
-  </tr>
-`;
+const { createUserInfor } = require('./createuserInfor');
+const { createInvoiceInfor } = require('./createInvoiceInfor');
+const { createRow } = require('./createRow');
 
 /**
  * @description Generates an `html` table with all the table rows
@@ -115,12 +44,16 @@ const createHtml = (data) => {
   <html>
     <head>
       <style>
+        body {
+          padding: 30px;
+        }
         p {
           line-height: 0.5
         }
         table {
           width: 100%;
           border-collapse: collapse;
+          border-bottom: 2px solid #CCC;
         }
         tr {
           text-align: left;
@@ -166,6 +99,14 @@ const createHtml = (data) => {
           <div class='clear-float'></div>
         </div>
       ${table}
+      <div>
+        <p>
+          <span>${data.itemsTotal.stringValue}</span>
+          <span>Total</span>
+          <span>${data.itemsTotal.numberValue}</span>
+        </p>
+        <p>VAT (7%) <span>${data.itemsTotal.vat}</span></p>
+      </div>
     </body>
   </html>
 `;
