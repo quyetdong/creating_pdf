@@ -1,28 +1,11 @@
 const fs = require('fs');
 
 const data = require('./data.json');
-const { buildPathHtml } = require('./buildPaths');
-const { createUserInfor } = require('./createuserInfor');
-const { createInvoiceInfor } = require('./createInvoiceInfor');
-const { createRow } = require('./createRow');
-
-/**
- * @description Generates an `html` table with all the table rows
- * @param {String} rows
- * @returns {String}
- */
-const createTable = (rows) => `
-  <table>
-    <tr class='row-title'>
-        <th>ITEM</td>
-        <th>Description</td>
-        <th>Qty</td>
-        <th>Unit Price</td>
-        <th>Amount (THB)</td>
-    </tr>
-    ${rows}
-  </table>
-`;
+const { buildPathHtml } = require('./lib/buildPaths');
+const { createUserInfor } = require('./lib/createuserInfor');
+const { createInvoiceInfor } = require('./lib/createInvoiceInfor');
+const { createTable } = require('./lib/createTable');
+const { createAdditionalInfor } = require('./lib/createAdditionalInfor');
 
 /**
  * @description Generate an `html` page with a populated table
@@ -30,14 +13,13 @@ const createTable = (rows) => `
  * @returns {String}
  */
 const createHtml = (data) => {
-  /* generate rows of items */
-  const rows = data.items.map(createRow).join('');
-  /* generate table */
-  const table = createTable(rows);
+  /* generate item table */
+  const table = createTable(data.items);
   /* generate user information */
   const userInfor = createUserInfor(data.user);
   /* generate invoice information */
-  const invoiceInfor = createInvoiceInfor(data);
+  const invoiceHeaderInfor = createInvoiceInfor(data);
+  const invoiceSupplementInfor = createAdditionalInfor(data);
 
   /* return html */
   return `
@@ -45,68 +27,148 @@ const createHtml = (data) => {
     <head>
       <style>
         body {
-          padding: 30px;
+          margin: 3pt 10pt;
         }
         p {
           line-height: 0.5
         }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          border-bottom: 2px solid #CCC;
+
+        .invoice-date {
+          margin: 0;
         }
-        tr {
-          text-align: left;
-        }
-        th, td {
-          padding: 15px;
-        }
-        tr:nth-child(even) {
-          background: #FFF
+        .text-opaque {
+          font-size: 10pt;
+          opacity: 0.6;
+          filter: Alpha(opacity=50); /* IE8 and earlier */
         }
         .no-content {
           background-color: red;
         }
         .user-infor {
-          float: left
+          float: left;
+          margin-top: 20pt;
         }
         .invoice-infor {
-          float: right
+          float: right;
+          text-align: right;
         }
         .clear-float {
           clear: both
         }
         .logo {
-          height: 60px;
-          width: 60px;
+          height: 60pt;
+          width: 60pt;
+          margin-bottom: 15pt;
           -webkit-print-color-adjust: exact;
           background-color: #CCC;
-          border: 1px solid #000;
+          border: 0.75pt solid #000;
         }
-        .invoice-bottom-border {
-          border-bottom: 1px solid #000;
+        .invoice-header-container {
+          margin-top: 12pt;
         }
-        .row-title > th {
-          -webkit-print-color-adjust: exact;
-          border-bottom: 2px solid #CCC;
+        .invoice-header {
+          border-bottom: 0.75pt solid #000;
+          margin-top: 10pt;
+          margin-left: 0;
+          font-size: 18pt;
+        }
+        .invoice-supplement {
+          margin-right: 15pt;
+        }
+        .row-title-container {
+          text-align: center;
+          border-bottom: 1.5pt solid #CCC;
+        }
+        .row-container {
+          display: grid;
+          grid-template-columns: repeat(16, 1fr);
+        }
+        .table-container {
+          border-bottom: 1.5pt solid #CCC;
+        }
+        .item-id {
+          grid-column: span 1;
+        }
+        .description {
+          grid-column: span 6;
+        }
+
+        .total-string {
+          grid-column: span 10;
+        }
+        .total-title {
+          grid-column: span 3;
+          text-align: right;
+        }
+        .table-value {
+          grid-column: span 3;
+          text-align: right;
+        }
+
+        /* remark or note block */
+        .payment-received-by {
+          border-bottom: 2pt dotted #CCC;
+          padding-bottom: 10pt;
+        }
+        .font-weight-bold {
+          font-weight: bold;
+        }
+        p.payment-received-by-title {
+          margin: 35pt 0 25pt 0;
+        }
+        span.payment-key {
+          display: inline-block;
+          width: 12%;
+        }
+        span.payment-key:not(:first-child) {
+          margin: 0 0 0 2%;
+        }
+        span.payment-value {
+          display: inline-block;
+          width: 19%;
+          border-bottom: 0.75pt solid black;
+        }
+
+        /* bank account information block */
+        .bank-account-title {
+          margin: 20pt 0 25pt;
+        }
+        .bank-account-row > span {
+          font-size: 11pt;
+          margin: 0 2pt;
+        }
+        .bank-payment-infor {
+          margin-bottom: 20pt;
+        }
+        .bank-payment-infor > span {
+          display: inline-block;
+          width: 33%;
         }
       </style>
     </head>
     <body>
         <div>
           ${userInfor}
-          ${invoiceInfor}
+          ${invoiceHeaderInfor}
           <div class='clear-float'></div>
         </div>
       ${table}
-      <div>
-        <p>
-          <span>${data.itemsTotal.stringValue}</span>
-          <span>Total</span>
-          <span>${data.itemsTotal.numberValue}</span>
-        </p>
-        <p>VAT (7%) <span>${data.itemsTotal.vat}</span></p>
+      <div class='item-total-container row-container'>
+        <div class='total-string'>
+          <p>${data.itemsTotal.stringValue}</p>
+        </div>
+        <div class='total-title'>
+          <p>Total</p>
+          <p>VAT (7%)</p>
+          <p class='font-weight-bold'>Grand Total</p>
+        </div>
+        <div class='total-value table-value'>
+          <p>${data.itemsTotal.numberValue}</p>
+          <p>${data.itemsTotal.vat}</p>
+          <p>${data.itemsTotal.grandTotal}</p>
+        </div>
       </div>
+      ${invoiceSupplementInfor}
     </body>
   </html>
 `;

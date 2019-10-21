@@ -1,7 +1,7 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 // Build paths
-const { buildPathHtml, buildPathPdf } = require('./buildPaths');
+const { buildPathHtml, buildPathPdf } = require('./lib/buildPaths');
 
 const printPdf = async () => {
 	console.log('Starting: Generating PDF Process, Kindly wait ..');
