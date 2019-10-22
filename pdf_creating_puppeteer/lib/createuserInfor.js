@@ -18,10 +18,10 @@ const createUserInfor = (user = { addressLines: [] }) => {
         <p>Tel: ${user.phoneNumber}</p>
         <p>Tax ID: ${user.taxId}</p>
         <br />
-        <p><b>Room Unit:</b> ${billTo.roomUnit}</p>
-        <p><b>Bill to:</b> ${billTo.name}</p>
-        <p><b>Tel:</b> ${billTo.phoneNumber}</p>
-        <p><b>Address:</b> ${billTo.addressLines[0]}, ${billTo.addressLines[1]}${billTo.addressLines[2] ? `, ${billTo.addressLines[2]}` : ''}</p>
+        <p><span class='font-weight-bold'>Room Unit:</span> ${billTo.roomUnit}</p>
+        <p><span class='font-weight-bold'>Bill to:</span> ${billTo.name}</p>
+        <p><span class='font-weight-bold'>Tel:</span> ${billTo.phoneNumber}</p>
+        <p><span class='font-weight-bold'>Address:</span> ${billTo.addressLines[0]}, ${billTo.addressLines[1]}${billTo.addressLines[2] ? `, ${billTo.addressLines[2]}` : ''}</p>
       </div>
     `;
 };

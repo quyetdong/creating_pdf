@@ -58,5 +58,22 @@
     "stringValue": "seven thousand five hundred and twenty-five point five one",
     "vat": "132.51",
     "grandTotal": "7,393.00"
-  }
+  },
+  "bankAccounts": [
+    {
+      "accountNumber": "111-1-1111-1",
+      "accountName": "Apartment ABC Suree",
+      "bankName": "Bangkok Bank, Samyan Branch"
+    },
+    {
+      "accountNumber": "111-1-1111-1",
+      "accountName": "Apartment ABC Suree",
+      "bankName": "Bangkok Bank, Samyan Branch"
+    },
+    {
+      "accountNumber": "111-1-1111-1",
+      "accountName": "Apartment ABC Suree",
+      "bankName": "Bangkok Bank, Samyan Branch"
+    }
+  ]
 }
