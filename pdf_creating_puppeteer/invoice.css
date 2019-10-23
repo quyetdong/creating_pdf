@@ -1,0 +1,229 @@
+/* General style */
+
+body {
+  margin: 2pt 10pt;
+}
+
+p {
+  margin: 6pt 0;
+  font-size: 90%;
+}
+
+.text-opaque {
+  font-size: 10pt;
+  opacity: 0.6;
+  filter: Alpha(opacity=50);
+  /* IE8 and earlier */
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.clear-float {
+  clear: both
+}
+
+.no-content {
+  background-color: red;
+}
+
+.right-float {
+  float: right;
+}
+
+.left-float {
+  float: left;
+}
+
+
+/* General invoice information */
+
+.invoice-date {
+  margin: 0;
+}
+
+.invoice-infor {
+  text-align: right;
+}
+
+.invoice-header-container {
+  margin-top: 12pt;
+}
+
+.invoice-header {
+  border-bottom: 0.75pt solid #000;
+  margin-top: 10pt;
+  margin-left: 0;
+  font-size: 18pt;
+}
+
+.invoice-supplement {
+  margin-right: 15pt;
+}
+
+
+/* Logo and user information */
+
+.logo {
+  height: 50pt;
+  width: 50pt;
+  margin-bottom: 12pt;
+  -webkit-print-color-adjust: exact;
+  background-color: #CCC;
+  border: 0.75pt solid #000;
+}
+
+.user-infor {
+  margin-top: 20pt;
+}
+
+.contact-user-infor {
+  margin-bottom: 18pt;
+}
+
+
+/* Table of items */
+
+.row-title-container {
+  border-bottom: 1.5pt solid #CCC;
+}
+
+.row-title-container>p:nth-child(2) {
+  text-align: center;
+}
+
+.row-container {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.table-container {
+  border-bottom: 1.5pt solid #CCC;
+}
+
+.item-id {
+  grid-column: span 1;
+}
+
+.description {
+  grid-column: span 6;
+}
+
+.total-string {
+  grid-column: span 10;
+}
+
+.total-title {
+  grid-column: span 3;
+  text-align: right;
+}
+
+.table-value {
+  grid-column: span 3;
+  text-align: right;
+}
+
+
+/* Remark or note block */
+
+.payment-received-by {
+  border-bottom: 2pt dotted #CCC;
+  padding: 10pt 0;
+}
+
+p.payment-received-by-title {
+  margin-bottom: 20pt;
+}
+
+span.payment-key {
+  display: inline-block;
+  width: 12%;
+}
+
+span.payment-key:not(:first-child) {
+  margin: 0 0 0 2%;
+}
+
+span.payment-value {
+  display: inline-block;
+  width: 19%;
+  border-bottom: 0.75pt solid black;
+}
+
+
+/* Bank account information block */
+
+.bank-account-title {
+  margin: 20pt 0 25pt;
+}
+
+.bank-account-row>span {
+  font-size: 11pt;
+  margin: 0 2pt;
+}
+
+.bank-payment-infor {
+  margin-bottom: 20pt;
+}
+
+.bank-payment-infor>span {
+  display: inline-block;
+  width: 33%;
+}
+
+
+/* Barcode block */
+
+.invoice-code-container {
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+  border: 1pt solid #CCC;
+  margin: 8pt 0;
+  height: 65pt;
+  padding-bottom: 5pt;
+}
+
+p.invoice-code-instruction {
+  grid-column: span 4;
+  line-height: 120%;
+  text-align: center;
+  font-size: 80%;
+  padding: 15pt 5pt 0 5pt;
+}
+
+.barcode-container {
+  grid-column: span 10;
+}
+
+.barcode-container>p {
+  text-align: center;
+}
+
+.qrcode-container {
+  grid-column: span 3;
+  margin: auto;
+}
+
+.barcode-img {
+  width: 100%;
+  height: 35pt;
+}
+
+.qrcode-img {
+  height: 50pt;
+  width: 80%;
+  padding: 10pt;
+}
+
+
+/* Footer */
+
+.invoice-footer {
+  margin-top: 10pt;
+  border-top: 1pt solid #CCC;
+}
+
+.invoice-footer>p {
+  text-align: left;
+}

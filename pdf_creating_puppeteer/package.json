@@ -10,8 +10,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:table": "node ./createHtml.js",
-    "prebuild:pdf": "yarn build:table",
+    "build:html": "node ./createHtml.js",
+    "prebuild:pdf": "yarn build:html",
     "build:pdf": "node ./createPdf.js"
   },
   "author": "kentdong",

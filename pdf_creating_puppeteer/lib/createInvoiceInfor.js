@@ -4,7 +4,7 @@
  */
 const createInvoiceInfor = (invoice = {}) => {
     return `
-      <div class='invoice-infor'>
+      <div class='invoice-infor right-float'>
         <p class='invoice-date text-opaque'>${invoice.createdAt}</p>
         <div class='invoice-header-container'><span class='invoice-header font-weight-bold'>INVOICE</span></div>
         <div><span class='invoice-supplement font-weight-bold'>(Original)</span></div>

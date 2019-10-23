@@ -1,8 +1,11 @@
 const path = require('path');
 
 const buildPaths = {
-   buildPathHtml: path.resolve('./build.html'),
-   buildPathPdf: path.resolve('./build.pdf')
+   htmlFilePath: path.resolve('./storage/build.html'),
+   cssFilePath: path.resolve('./invoice.css'),
+   pdfFilePath: path.resolve('./storage/build.pdf'),
+   barcodeFilePath: path.resolve('./storage/barcode-image.png'),
+   qrcodeFilePath: path.resolve('./storage/qrcode-image.png'),
 };
 
 module.exports = buildPaths;

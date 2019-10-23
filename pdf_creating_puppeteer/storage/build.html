@@ -1,145 +1,32 @@
 
   <html>
     <head>
-      <style>
-        body {
-          margin: 3pt 10pt;
-        }
-        p {
-          line-height: 0.5
-        }
-
-        .invoice-date {
-          margin: 0;
-        }
-        .text-opaque {
-          font-size: 10pt;
-          opacity: 0.6;
-          filter: Alpha(opacity=50); /* IE8 and earlier */
-        }
-        .no-content {
-          background-color: red;
-        }
-        .user-infor {
-          float: left;
-          margin-top: 20pt;
-        }
-        .invoice-infor {
-          float: right;
-          text-align: right;
-        }
-        .clear-float {
-          clear: both
-        }
-        .logo {
-          height: 60pt;
-          width: 60pt;
-          margin-bottom: 15pt;
-          -webkit-print-color-adjust: exact;
-          background-color: #CCC;
-          border: 0.75pt solid #000;
-        }
-        .invoice-header-container {
-          margin-top: 12pt;
-        }
-        .invoice-header {
-          border-bottom: 0.75pt solid #000;
-          margin-top: 10pt;
-          margin-left: 0;
-          font-size: 18pt;
-        }
-        .invoice-supplement {
-          margin-right: 15pt;
-        }
-        .row-title-container {
-          text-align: center;
-          border-bottom: 1.5pt solid #CCC;
-        }
-        .row-container {
-          display: grid;
-          grid-template-columns: repeat(16, 1fr);
-        }
-        .table-container {
-          border-bottom: 1.5pt solid #CCC;
-        }
-        .item-id {
-          grid-column: span 1;
-        }
-        .description {
-          grid-column: span 6;
-        }
-
-        .total-string {
-          grid-column: span 10;
-        }
-        .total-title {
-          grid-column: span 3;
-          text-align: right;
-        }
-        .table-value {
-          grid-column: span 3;
-          text-align: right;
-        }
-
-        /* remark or note block */
-        .payment-received-by {
-          border-bottom: 2pt dotted #CCC;
-          padding-bottom: 10pt;
-        }
-        .font-weight-bold {
-          font-weight: bold;
-        }
-        p.payment-received-by-title {
-          margin: 35pt 0 25pt 0;
-        }
-        span.payment-key {
-          display: inline-block;
-          width: 12%;
-        }
-        span.payment-key:not(:first-child) {
-          margin: 0 0 0 2%;
-        }
-        span.payment-value {
-          display: inline-block;
-          width: 19%;
-          border-bottom: 0.75pt solid black;
-        }
-
-        /* bank account information block */
-        .bank-account-title {
-          margin: 20pt 0 25pt;
-        }
-        .bank-account-row > span {
-          font-size: 11pt;
-          margin: 0 2pt;
-        }
-        .bank-payment-infor {
-          margin-bottom: 20pt;
-        }
-        .bank-payment-infor > span {
-          display: inline-block;
-          width: 33%;
-        }
-      </style>
+      <link rel="stylesheet" type="text/css" href="/Users/mobixmac04/Documents/1.Projects/pdf_creating/pdf_creating_puppeteer/invoice.css">
     </head>
     <body>
         <div>
           
-      <div class='user-infor'>
+      <div class='user-infor left-float'>
         <div class='logo'></div>
-        <p>The Living OS Thong Lor</p>
-        <p>28/244 Soi 7 Road, Thong lor, Bangkok 10400</p>
-        <p>Tel: 02-3434543</p>
-        <p>Tax ID: 0123433444565</p>
-        <br />
-        <p><span class='font-weight-bold'>Room Unit:</span> 88/102</p>
-        <p><span class='font-weight-bold'>Bill to:</span> Samyan Suksan</p>
-        <p><span class='font-weight-bold'>Tel:</span> 0897867866</p>
-        <p><span class='font-weight-bold'>Address:</span> 28/244 Soi 7 Road, Samyan, Bangkok</p>
+        <div class='contact-user-infor'>
+          <p>The Living OS Thong Lor</p>
+          <p>28/244 Soi 7 Road, Thong lor, Bangkok 10400</p>
+          <p>Tel: 02-3434543</p>
+          <p>Tax ID: 0123433444565</p>
+        </div>
+        <div class='bill-user-infor'>
+          <p><span class='font-weight-bold'>Room Unit:</span> 88/102</p>
+          <p><span class='font-weight-bold'>Bill to:</span> Samyan Suksan</p>
+          <p><span class='font-weight-bold'>Tel:</span> 0897867866</p>
+          <p>
+            <span class='font-weight-bold'>Address:</span>
+            <span>28/244 Soi 7 Road, Samyan, Bangkok</span>
+          </p>
+        </div>
       </div>
     
           
-      <div class='invoice-infor'>
+      <div class='invoice-infor right-float'>
         <p class='invoice-date text-opaque'>23/8/2019 [10:45 AM]</p>
         <div class='invoice-header-container'><span class='invoice-header font-weight-bold'>INVOICE</span></div>
         <div><span class='invoice-supplement font-weight-bold'>(Original)</span></div>
@@ -194,6 +81,54 @@
     <p class='table-value row-value'>437.00</p>
   </div>
 
+  <div class='row-item-container row-container'>
+    <p class='item-id'>5</p>
+    <p class='description'>Electric fee (5743 - 5951)</p>
+    <p class='table-value row-value'>208</p>
+    <p class='table-value row-value'>7.00</p>
+    <p class='table-value row-value'>1,456.00</p>
+  </div>
+
+  <div class='row-item-container row-container'>
+    <p class='item-id'>6</p>
+    <p class='description'>Hydrfo fee (699 - 722)</p>
+    <p class='table-value row-value'>23</p>
+    <p class='table-value row-value'>19.00</p>
+    <p class='table-value row-value'>437.00</p>
+  </div>
+
+  <div class='row-item-container row-container'>
+    <p class='item-id'>7</p>
+    <p class='description'>Electric fee (5743 - 5951)</p>
+    <p class='table-value row-value'>208</p>
+    <p class='table-value row-value'>7.00</p>
+    <p class='table-value row-value'>1,456.00</p>
+  </div>
+
+  <div class='row-item-container row-container'>
+    <p class='item-id'>8</p>
+    <p class='description'>Hydrfo fee (699 - 722)</p>
+    <p class='table-value row-value'>23</p>
+    <p class='table-value row-value'>19.00</p>
+    <p class='table-value row-value'>437.00</p>
+  </div>
+
+  <div class='row-item-container row-container'>
+    <p class='item-id'>9</p>
+    <p class='description'>Electric fee (5743 - 5951)</p>
+    <p class='table-value row-value'>208</p>
+    <p class='table-value row-value'>7.00</p>
+    <p class='table-value row-value'>1,456.00</p>
+  </div>
+
+  <div class='row-item-container row-container'>
+    <p class='item-id'>10</p>
+    <p class='description'>Hydrfo fee (699 - 722)</p>
+    <p class='table-value row-value'>23</p>
+    <p class='table-value row-value'>19.00</p>
+    <p class='table-value row-value'>437.00</p>
+  </div>
+
     </div>
   
       <div class='item-total-container row-container'>
@@ -227,7 +162,8 @@
       <div class='bank-account-container'>
         <p class='bank-account-title font-weight-bold'>Bank account information: Please send back transfer to the following account</p>
         <p class='font-weight-bold bank-payment-infor'>
-          <span>Total Amount</span><span class='total-amount-value'>7,393.00</span><span>Due Date: 31 AUG 2019</span>
+          <span>Total Amount</span><span class='total-amount-value'>7,393.00</span>
+          <span>Due Date: 31 AUG 2019</span>
         </p>
         
   <p class='bank-account-row'>
@@ -249,9 +185,23 @@
   </p>
 
       </div>
-      <div class='qr-code-container'>
-      </div>
     </div>
   
+      
+    <div class='invoice-code-container'>
+      <p class='invoice-code-instruction'>Payment Barcode by Kbank</p>
+      <div class='barcode-container'>
+        <p>(Scan QR or Barcode to transfer to bank)</p>
+        <img src='barcode-image.png' class='barcode-img' alt='Barcode of Invoice'>
+      </div>
+      <p class='invoice-code-instruction'>Payment QR code by Kbank</p>
+      <div class='qrcode-container'><img src='qrcode-image.png' class='qrcode-img' alt='QR code of Invoice'></div>
+    </div>
+  
+      
+  <div class='invoice-footer'>
+    <p>Invoice Foot note: Please send us the payment details to admin@resident.my or Upload a copy of your payment slip to Payment Form</p>
+  </div>
+
     </body>
   </html>

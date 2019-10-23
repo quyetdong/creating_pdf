@@ -17,7 +17,7 @@ const createPaymentReceivedInfor = () => `
   </div>
 `;
 
-const createAdditionalInfor = (data) => {
+const createInvoiceSupplementInfor = (data) => {
   const { bankAccounts = [] } = data;
   const bankAccountList = bankAccounts.map(createBankAccountList).join('');
   const { itemsTotal = {} } = data;
@@ -30,14 +30,13 @@ const createAdditionalInfor = (data) => {
       <div class='bank-account-container'>
         <p class='bank-account-title font-weight-bold'>Bank account information: Please send back transfer to the following account</p>
         <p class='font-weight-bold bank-payment-infor'>
-          <span>Total Amount</span><span class='total-amount-value'>${itemsTotal.grandTotal}</span><span>Due Date: ${data.dueDate}</span>
+          <span>Total Amount</span><span class='total-amount-value'>${itemsTotal.grandTotal}</span>
+          <span>Due Date: ${data.dueDate}</span>
         </p>
         ${bankAccountList}
-      </div>
-      <div class='qr-code-container'>
       </div>
     </div>
   `;
 };
 
-module.exports = { createAdditionalInfor };
+module.exports = { createInvoiceSupplementInfor };
